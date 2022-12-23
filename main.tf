@@ -72,7 +72,7 @@ resource "aws_instance" "web" {
     # The EC2 instance must have a specific tag.
     postcondition {
       condition     = self.tags["Billable"] == "true"
-      error_message = "tags[\"Component\"] must be \"nomad-server\"."
+      error_message = "tags[\"Billable\"] must be \"true\"."
     }
   }
 }
