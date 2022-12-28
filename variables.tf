@@ -9,6 +9,7 @@ variable "cidr_subnet" {
 
 variable "aws_region"{
   description = "The region Terraform deploys your instance"
+  default   = "us-east-2"
 }
 
 variable "owner" {
