@@ -8,7 +8,7 @@ variable "cidr_subnet" {
 }
 
 variable "ec2-size" {
-  description = "ec2 size - micro or small"
+  description = "t2 size - micro or small"
   default     = "t2.micro"
 }
 
