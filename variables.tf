@@ -7,6 +7,12 @@ variable "cidr_subnet" {
   default     = "10.1.0.0/24"
 }
 
+variable "ec2-size" {
+  description = "ec2 size - micro or small"
+  default     = "t2.micro"
+}
+
+
 variable "aws_region"{
   description = "The region Terraform deploys your instance"
   default   = "us-east-2"
