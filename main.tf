@@ -6,7 +6,6 @@ terraform {
     }
   }
 }
- 
 provider "vault" {
   # HCP Vault Configuration options
   address = var.vault_address
@@ -14,7 +13,6 @@ provider "vault" {
   auth_login {
     path = "auth/userpass/login/${var.login_username}"
     namespace = var.vault_namespace
-    
     parameters = {
       password = var.login_password
     }
@@ -36,7 +34,6 @@ provider "aws" {
 
 data "aws_ami" "ubuntu" {
   most_recent = true
-
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -54,13 +51,12 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   count         = 1
-
   tags = {
     Department = var.Department
     Billable = var.Billable
     TicketNumber = var.TicketNumber
   }
-  
+
   lifecycle {
 
     # The EC2 instance must be allocated a public DNS hostname.
