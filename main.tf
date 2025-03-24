@@ -6,7 +6,6 @@ terraform {
     }
   }
 }
-# configure provider to use Vault's dynamically generated credentials for AWS
 provider "aws" {
   region = var.aws_region
 
