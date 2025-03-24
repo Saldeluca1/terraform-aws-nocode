@@ -34,22 +34,3 @@ variable "Department" {
 variable "Billable" {
   description = "to bill or not to bill"
   }
-
-variable "vault_address" {
-    description = "url to use to access vault"
-    default = "https://dp-vault-cluster.vault.1e53275e-94b7-4575-b679-735c6df54970.aws.hashicorp.cloud:8200/ui/vault"
-
-  }
-
-variable "vault_namespace" {
-    description = "namespace to use"
-    default = "/admin"
-}
-
-variable "login_username" {
-    description = "vault auth username"
-}
-
-variable "login_password" {
-    description = "vault auth password"
-}
