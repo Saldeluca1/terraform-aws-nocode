@@ -6,30 +6,10 @@ terraform {
     }
   }
 }
-provider "vault" {
-  # HCP Vault Configuration options
-  address = var.vault_address
-  namespace = var.vault_namespace
-  auth_login {
-    path = "auth/userpass/login/${var.login_username}"
-    namespace = var.vault_namespace
-    parameters = {
-      password = var.login_password
-    }
-  }
-}
-
-# ask Vault to get credentials to use for deployment to AWS
-data "vault_aws_access_credentials" "aws_creds" {
-  backend = "aws"
-  role     = "ec2-iam-user-role"
-}
-
 # configure provider to use Vault's dynamically generated credentials for AWS
 provider "aws" {
   region = var.aws_region
-  access_key = sensitive("${data.vault_aws_access_credentials.aws_creds.access_key}")
-  secret_key = sensitive("${data.vault_aws_access_credentials.aws_creds.secret_key}")
+
 }
 
 data "aws_ami" "ubuntu" {
