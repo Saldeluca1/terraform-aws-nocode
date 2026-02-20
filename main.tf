@@ -11,12 +11,21 @@ provider "aws" {
 
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
+# Example: Fetching the latest approved Ubuntu 24.04 AMI
+data "aws_ami" "hc-base-ubuntu-2404" {
+  for_each = toset(["amd64", "arm64"])
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = [format("hc-base-ubuntu-2404-%s-*", each.value)]
   }
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+  most_recent = true
+  owners      = ["888995627335"] # ami-prod account
+}
+
 
   filter {
     name   = "virtualization-type"
