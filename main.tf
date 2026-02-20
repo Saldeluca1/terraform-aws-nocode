@@ -28,7 +28,7 @@ data "aws_ami" "hc-base-ubuntu-2404" {
 
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = "ami-0daa16cc4bc2ec7e7"
   instance_type = "t2.micro"
   count         = 1
   tags = {
